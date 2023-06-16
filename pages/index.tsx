@@ -8,7 +8,7 @@ export default function Home() {
           <Link href="/">Select Meeting</Link>
         </div>
         <div>
-          <Link href="/">Simple StopWatch</Link>
+          <Link href="/stopwatch">Simple Stopwatch</Link>
         </div>
       </div>
     </>
