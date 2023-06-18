@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div>
         <div>
-          <Link href="/">Select Meeting</Link>
+          <Link href="/WasteMeeting/RegisterUser">Waste Meeting</Link>
         </div>
         <div>
           <Link href="/stopwatch">Simple Stopwatch</Link>
