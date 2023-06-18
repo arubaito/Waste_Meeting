@@ -12,7 +12,7 @@ export default function Stopwatch() {
     const router = useRouter();
     const per1hourCost: number = Number(router.query.cost1) + Number(router.query.cost2) + Number(router.query.cost3) + Number(router.query.cost4);
     const per1minCost: number = Math.round(per1hourCost / 60);
-    const per1sCost: number = Math.round(per1minCost / 60); // TODO:1min辺り0¥だとコストが0になる
+    const per1sCost: number = Math.round(per1minCost * Math.pow(10, 2) / 60) / Math.pow(10, 2); // 1mあたりは小数点２桁まで残す
     const [cost, setCost] = useState<number>(0);
 
 
@@ -59,12 +59,12 @@ export default function Stopwatch() {
                 </div>
             </div>
             <h1>Participants Cost</h1>
-            <div>{cost}¥</div>
-            <h3>Per 1H Cost</h3>
+            <div>{Math.round(cost * Math.pow(10, 2)) / Math.pow(10, 2)}¥</div>
+            <h3>1H Cost</h3>
             <div>{per1hourCost}¥</div>
-            <h3>Per 1MIN Cost</h3>
+            <h3>1MIN Cost</h3>
             <div>{per1minCost}¥</div>
-            <h3>Per 1S Cost</h3>
+            <h3>1S Cost</h3>
             <div>{per1sCost}¥</div>
 
         </>
