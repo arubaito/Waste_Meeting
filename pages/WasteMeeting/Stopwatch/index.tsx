@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Stopwatch() {
+    // 翻訳設定
+    const { t } = useTranslation('common')
 
     // ストップウォッチ
     const [time, setTime] = useState<number>(0);
@@ -46,7 +50,7 @@ export default function Stopwatch() {
 
     return (
         <>
-            <h1>Your Meeting Time</h1>
+            <h1>{t('W02_meeting_time')}</h1>
             <div>
                 <div>{hours}:{minutes}:{seconds}</div>
                 <div id="buttons">
@@ -58,16 +62,30 @@ export default function Stopwatch() {
                     <button onClick={handleReset}>RESET</button>
                 </div>
             </div>
-            <h1>Participants Cost</h1>
+            <h1>{t("W02_meeting_cost")}</h1>
             <div>{Math.round(cost * Math.pow(10, 2)) / Math.pow(10, 2)}¥</div>
-            <h3>1H Cost</h3>
+            <h3>{t("W02_1h_cost")}</h3>
             <div>{per1hourCost}¥</div>
-            <h3>1MIN Cost</h3>
+            <h3>{t("W02_1m_cost")}</h3>
             <div>{per1minCost}¥</div>
-            <h3>1S Cost</h3>
+            <h3>{t("W02_1s_cost")}</h3>
             <div>{per1sCost}¥</div>
 
         </>
 
     );
 }
+
+/**
+ * 
+ * @param locale: next-i18nextの設定 
+ */
+export async function getStaticProps({ locale }: { locale: any}) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'common',
+        ])),
+      },
+    }
+  }

@@ -1,3 +1,5 @@
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 
@@ -6,6 +8,9 @@ import { useRef } from "react";
  */
 export default function RegisterUser() {
     
+    // 翻訳ファイル
+    const { t } = useTranslation('common')
+
     const router = useRouter();
     const cost1 = useRef<number>(0)
     const cost2 = useRef<number>(0)
@@ -28,19 +33,33 @@ export default function RegisterUser() {
     
     return (
         <>
-            <h1>Register Participants Cost (/ 1h)</h1>
+            <h1>{t("W01_register_participants_cost")} (/ 1h)</h1>
             <div>
                 <form >
-                    <div>User 1 : <input type="number" onChange={(e) => cost1.current = Number(e.target.value)} /> ¥</div>
-                    <div>User 2 : <input type="number" onChange={(e) => cost2.current = Number(e.target.value)} /> ¥</div>
-                    <div>User 3 : <input type="number" onChange={(e) => cost3.current = Number(e.target.value)} /> ¥</div>
-                    <div>User 4 : <input type="number" onChange={(e) => cost4.current = Number(e.target.value)} /> ¥</div>
+                    <div>{t("W01_participant")} 1 : <input type="number" onChange={(e) => cost1.current = Number(e.target.value)} /> ¥</div>
+                    <div>{t("W01_participant")} 2 : <input type="number" onChange={(e) => cost2.current = Number(e.target.value)} /> ¥</div>
+                    <div>{t("W01_participant")} 3 : <input type="number" onChange={(e) => cost3.current = Number(e.target.value)} /> ¥</div>
+                    <div>{t("W01_participant")} 4 : <input type="number" onChange={(e) => cost4.current = Number(e.target.value)} /> ¥</div>
                 </form>
             </div>
             <div>
-                <button onClick={clickHandler} >GO</button>
+                <button onClick={clickHandler} >{t("W01_go")}</button>
             </div>
         </>
 
     );
 }
+
+/**
+ * 
+ * @param locale: next-i18nextの設定 
+ */
+export async function getStaticProps({ locale }: { locale: any}) {
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'common',
+        ])),
+      },
+    }
+  }
