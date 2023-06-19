@@ -1,6 +1,9 @@
+import { appWithTranslation } from 'next-i18next'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} /> // https://blog.hey3.dev/posts/nextjs-spa
+function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} /> // SSRとか⇒ https://blog.hey3.dev/posts/nextjs-spa
 }
+
+export default appWithTranslation(App);

@@ -1,0 +1,10 @@
+{
+    "C00_cost_timer": "COST TIMER",
+    "W01_register_participants_cost": "Register Participants Cost", 
+    "W01_participant": "participant",
+    "W02_meeting_time": "Meeting Time", 
+    "W02_meeting_cost": "Meeting Cost",
+    "W02_1h_cost": "/ 1hour",
+    "W02_1m_cost": "/ 1min",
+    "W02_1s_cost": "/ 1second"
+}

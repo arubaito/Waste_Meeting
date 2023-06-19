@@ -1,0 +1,10 @@
+{
+    "C00_cost_timer": "ムダ会議",
+    "W01_register_participants_cost": "コスト登録", 
+    "W01_participant": "参加者",
+    "W02_meeting_time": "Meeting Time", 
+    "W02_meeting_cost": "会議コスト",
+    "W02_1h_cost": "/ 1hour",
+    "W02_1m_cost": "/ 1min",
+    "W02_1s_cost": "/ 1second"
+}
