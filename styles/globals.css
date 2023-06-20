@@ -40,3 +40,21 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+:root {
+    /* 文字サイズ */
+    /* 16-18px */
+    --body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+    /* 72-160px */
+    --display: clamp(4.5rem, 1.83rem + 11.34vw, 10rem);
+    /* 32-64px */
+    --heading1: clamp(2rem, 1.3rem + 3vw, 4rem);
+    /* 24-27px */
+    --heading2: clamp(var(--body) * 1.5);
+    /* 19.2-21.6px */
+    --heading3: clamp(var(--body) * 1.2);
+    /* 14-27 */
+    --small-heading2: clamp(0.875rem, 4vw - 1rem, 1.6875rem);
+    /* 12-23px */
+    --small-heading3: clac(var(--small-heading2) * 0.86);
+}

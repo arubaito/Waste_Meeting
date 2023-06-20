@@ -1,0 +1,19 @@
+.menuContainer{
+    text-align: center;
+}
+
+.menuItem :hover{
+    color: blue;
+}
+
+.menuItem{
+    font-size:larger;
+}
+
+.menuItems{
+    padding-top: 1em;
+}
+
+.menuItems > * + * {
+    padding-top: 1em;
+}
