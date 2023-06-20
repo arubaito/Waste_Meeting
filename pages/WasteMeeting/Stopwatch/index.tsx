@@ -14,7 +14,13 @@ export default function Stopwatch() {
 
     // コスト計算
     const router = useRouter();
-    const per1hourCost: number = Number(router.query.cost1) + Number(router.query.cost2) + Number(router.query.cost3) + Number(router.query.cost4);
+    // queryで渡されたコストを加算する
+    const costsList = Object.values(router.query);
+    var per1hourCost: number = 0;
+    costsList.forEach((element:any) => {
+        per1hourCost = per1hourCost + Number(element);
+    });
+    // １時間単位を各単位へ変換
     const per1minCost: number = Math.round(per1hourCost / 60);
     const per1sCost: number = Math.round(per1minCost * Math.pow(10, 2) / 60) / Math.pow(10, 2); // 1mあたりは小数点２桁まで残す
     const [cost, setCost] = useState<number>(0);
