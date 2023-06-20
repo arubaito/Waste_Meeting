@@ -1,0 +1,50 @@
+.contentsContainer{
+    text-align: center;
+}
+
+.stopwatch{
+    font-size: var(--display);
+}
+
+.buttons > button{
+    border-radius: 6px;
+    margin: 32px 5px 0;
+    padding: 20px 0;
+    width: 280px;
+    display: inline-block;
+    letter-spacing: 0.05em;
+    background-color: chartreuse;
+    border-color: darkslategray;
+    color: lightgoldenrodyellow;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .formButton {
+        margin-top: 24px;
+        padding: 8px 0;
+        width: 160px;
+        font-size: 16px;
+    }
+}
+
+
+/* コストタイトル */
+.costTitle{
+    margin-top: 2em;
+    letter-spacing: 1em;
+    text-decoration: underline;
+}
+
+.costContainer{
+    background-color: #aaaaaa;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap:5em
+}

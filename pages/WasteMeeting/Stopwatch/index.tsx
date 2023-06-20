@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import styles from "styles/W02_Stopwatch.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
 
 export default function Stopwatch() {
     // 翻訳設定
@@ -17,7 +20,7 @@ export default function Stopwatch() {
     // queryで渡されたコストを加算する
     const costsList = Object.values(router.query);
     var per1hourCost: number = 0;
-    costsList.forEach((element:any) => {
+    costsList.forEach((element: any) => {
         per1hourCost = per1hourCost + Number(element);
     });
     // １時間単位を各単位へ変換
@@ -56,27 +59,40 @@ export default function Stopwatch() {
 
     return (
         <>
-            <h1>{t('W02_meeting_time')}</h1>
-            <div>
-                <div>{hours}:{minutes}:{seconds}</div>
-                <div id="buttons">
-                    {isRunning ? (
-                        <button onClick={handlePause}>PAUSE</button>
-                    ) : (
-                        <button onClick={handleStart}>START</button>
-                    )}
-                    <button onClick={handleReset}>RESET</button>
+            <div className={styles.contentsContainer}>
+                {/* ストップウォッチ */}
+                <div>
+                    <div className={styles.stopwatch}>{hours}:{minutes}:{seconds}</div>
+                    <div className={styles.buttons}>
+                        {isRunning ? (
+                            <button onClick={handlePause}>PAUSE</button>
+                        ) : (
+                            <button onClick={handleStart}>START</button>
+                        )}
+                        <button onClick={handleReset}>RESET</button>
+                    </div>
+                </div>
+                {/* コスト */}
+                <div className={styles.costTitle}>
+                    <h1>
+                        <FontAwesomeIcon icon={faSackDollar} />
+                        {t("W02_meeting_cost")}　:　
+                        {Math.round(cost * Math.pow(10, 2)) / Math.pow(10, 2)}¥
+                    </h1>
+                </div>
+                <div className={styles.costContainer}>
+                    <div>
+                        {per1hourCost}¥
+                        {t("W02_1h_cost")}
+                    </div>
+                    <div>
+                        {per1minCost}¥ {t("W02_1m_cost")}
+                    </div>
+                    <div>
+                        {per1sCost}¥ {t("W02_1s_cost")}
+                    </div>
                 </div>
             </div>
-            <h1>{t("W02_meeting_cost")}</h1>
-            <div>{Math.round(cost * Math.pow(10, 2)) / Math.pow(10, 2)}¥</div>
-            <h3>{t("W02_1h_cost")}</h3>
-            <div>{per1hourCost}¥</div>
-            <h3>{t("W02_1m_cost")}</h3>
-            <div>{per1minCost}¥</div>
-            <h3>{t("W02_1s_cost")}</h3>
-            <div>{per1sCost}¥</div>
-
         </>
 
     );
@@ -86,12 +102,12 @@ export default function Stopwatch() {
  * 
  * @param locale: next-i18nextの設定 
  */
-export async function getStaticProps({ locale }: { locale: any}) {
+export async function getStaticProps({ locale }: { locale: any }) {
     return {
-      props: {
-        ...(await serverSideTranslations(locale, [
-          'common',
-        ])),
-      },
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'common',
+            ])),
+        },
     }
-  }
+}
