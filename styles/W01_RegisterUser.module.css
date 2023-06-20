@@ -1,0 +1,67 @@
+.contentsContainer{
+    text-align: center;
+    /* font-size: xx-large; */
+}
+
+/* インプットボックスのコンテナ */
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* インプットテキストボックス */
+.contentsContainer input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    height: 48px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+    padding: .4em 3.6em .4em .8em;
+    margin: 0 1em;
+}
+@media screen and (max-width: 768px) {
+    .contentsContainer  input {
+      margin-left: 0;
+      margin-top: 18px;
+      height: 40px;
+      flex: inherit;
+      font-size: 15px;
+    }
+}
+
+/* 通貨単位 */
+.currencyUnit{
+    font-size: xx-large;
+    vertical-align: middle;
+}
+
+
+
+.buttons > button{
+    border-radius: 6px;
+    margin: 32px 5px 0;
+    padding: 20px 0;
+    width: 280px;
+    display: inline-block;
+    letter-spacing: 0.05em;
+    background-color: chartreuse;
+    border-color: darkslategray;
+    color: lightgoldenrodyellow;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .formButton {
+        margin-top: 24px;
+        padding: 8px 0;
+        width: 160px;
+        font-size: 16px;
+    }
+}
