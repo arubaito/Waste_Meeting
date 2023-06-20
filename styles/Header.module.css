@@ -1,0 +1,10 @@
+.headerBar{
+    margin-bottom: 1em;
+    width: 100%;
+    height: 60px;
+    background-color: chartreuse;
+}
+
+.icon{
+    color: azure;
+}
