@@ -28,7 +28,7 @@ export default function RegisterUser() {
     });
 
     // input を動的に増減させるための設定
-    const { fields, append} = useFieldArray({
+    const { fields, append } = useFieldArray({
         control,
         name: "costs",
     });
@@ -37,16 +37,16 @@ export default function RegisterUser() {
     // ※ 入力データは一時配列に展開して遷移先の画面に受け渡すobjectに変換してる
     const clickHandler = (data: any) => { // data.costs⇒[0:{cost:値}, 1:{cost:値}]
 
-        const tempList:any = []
+        const tempList: any = []
         let queryList = {};
-        
+
         // 一時配列に展開
-        data.costs.forEach((element :any, index:number) => {
-            tempList.push(element.cost)            
+        data.costs.forEach((element: any, index: number) => {
+            tempList.push(element.cost)
         });
 
         // 配列をオブジェクトに変換
-        queryList = {...tempList};
+        queryList = { ...tempList };
 
         // 画面遷移
         router.push({
@@ -79,12 +79,14 @@ export default function RegisterUser() {
                             )
                         })}
                     </div>
-                    <button
-                        type="button"
-                        onClick={() => append({ cost: '' })} // 初期値
-                    >
-                        +
-                    </button>
+                    <div className={styles.plusButton}>
+                        <button
+                            type="button"
+                            onClick={() => append({ cost: '' })}
+                        >
+                            +
+                        </button>
+                    </div>
                 </form>
                 <div className={styles.buttons}>
                     <button onClick={handleSubmit(clickHandler)}>{t("W01_go")}</button>
