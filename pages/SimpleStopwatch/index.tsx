@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import styles from "styles/W03_SimpleStopwatch.module.css";
 
 /**
  * ストップウォッチ画面
@@ -45,16 +46,17 @@ export default function StopWatch() {
 
     return (
         <>
-            <h1>Stopwatch</h1>
-            <div>
-                <div>{hours}:{minutes}:{seconds}:{milliseconds}</div>
-                <div id="buttons">
-                    {isRunning ? (
-                        <button onClick={handlePause}>PAUSE</button>
-                    ) : (
-                        <button onClick={handleStart}>START</button>
-                    )}
-                    <button onClick={handleReset}>RESET</button>
+            <div className={styles.contentsContainer}>
+                <div>
+                    <div className={styles.stopwatch}>{hours}:{minutes}:{seconds}:{milliseconds}</div>
+                    <div className={styles.buttons}>
+                        {isRunning ? (
+                            <button onClick={handlePause}>PAUSE</button>
+                        ) : (
+                            <button onClick={handleStart}>START</button>
+                        )}
+                        <button onClick={handleReset}>RESET</button>
+                    </div>
                 </div>
             </div>
         </>
