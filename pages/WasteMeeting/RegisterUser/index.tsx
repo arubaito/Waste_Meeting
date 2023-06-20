@@ -5,65 +5,89 @@ import { useRef } from "react";
 import styles from "styles/W01_RegisterUser.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYenSign } from "@fortawesome/free-solid-svg-icons";
+import { useForm, useFieldArray } from "react-hook-form";
 
 /**
  * ユーザのコスト登録
+ * 
+ * ↓動的にフォームを増減
+ * https://tech-o-proch.com/programing/react/579
  */
 export default function RegisterUser() {
 
+    // 画面遷移
+    const router = useRouter();
     // 翻訳ファイル
     const { t } = useTranslation('common')
 
-    const router = useRouter();
-    const cost1 = useRef<number>(0)
-    const cost2 = useRef<number>(0)
-    const cost3 = useRef<number>(0)
-    const cost4 = useRef<number>(0)
+    // React Hook Formを使う為の基本設定
+    const { register, handleSubmit, control }: any = useForm({
+        defaultValues: {
+            costs: [{ cost: "" }]
+        }
+    });
+
+    // input を動的に増減させるための設定
+    const { fields, append} = useFieldArray({
+        control,
+        name: "costs",
+    });
 
     // 入力したコストを画面遷移先に渡す
-    const clickHandler = () => {
+    // ※ 入力データは一時配列に展開して遷移先の画面に受け渡すobjectに変換してる
+    const clickHandler = (data: any) => { // data.costs⇒[0:{cost:値}, 1:{cost:値}]
+
+        const tempList:any = []
+        let queryList = {};
+        
+        // 一時配列に展開
+        data.costs.forEach((element :any, index:number) => {
+            tempList.push(element.cost)            
+        });
+
+        // 配列をオブジェクトに変換
+        queryList = {...tempList};
+
+        // 画面遷移
         router.push({
             pathname: "/WasteMeeting/Stopwatch",
-            query: {
-                cost1: cost1.current,
-                cost2: cost2.current,
-                cost3: cost3.current,
-                cost4: cost4.current,
-            }
+            query: queryList,
         });
     }
-
 
     return (
         <>
             <div className={styles.contentsContainer}>
                 <form >
                     <div className={styles.inputContainer}>
-                        <div>
-                            <span className={styles.participantText}>{t("W01_participant")} 1 :</span>
-                            <input type="number" onChange={(e) => cost1.current = Number(e.target.value)} />
-                            <span className={styles.currencyUnit}>
-                                <FontAwesomeIcon icon={faYenSign} />
-                            </span>
-                        </div>
-                        <div>
-                            {t("W01_participant")} 2 :
-                            <input type="number" onChange={(e) => cost2.current = Number(e.target.value)} />
-                            ¥
-                        </div>
-                        <div>
-                            {t("W01_participant")} 3 : <input type="number" onChange={(e) => cost3.current = Number(e.target.value)} />
-                            ¥
-                        </div>
-                        <div>
-                            {t("W01_participant")} 4 : <input type="number" onChange={(e) => cost4.current = Number(e.target.value)} />
-                            ¥
-                        </div>
+                        {/* 入力フォームの配列を展開 */}
+                        {fields.map((field, index) => {
+                            // 入力フォーム
+                            return (
+                                <div key={field.id}>
+                                    <span className={styles.participantText}>
+                                        {t("W01_participant")} {index + 1} :
+                                    </span>
+                                    <input
+                                        type="number"
+                                        {...register(`costs.${index}.cost`)} // 配列をcostsプロパティに登録
+                                    />
+                                    <span className={styles.currencyUnit}>
+                                        <FontAwesomeIcon icon={faYenSign} />
+                                    </span>
+                                </div>
+                            )
+                        })}
                     </div>
-                    <button >+</button>
+                    <button
+                        type="button"
+                        onClick={() => append({ cost: '' })} // 初期値
+                    >
+                        +
+                    </button>
                 </form>
                 <div className={styles.buttons}>
-                    <button onClick={clickHandler} >{t("W01_go")}</button>
+                    <button onClick={handleSubmit(clickHandler)}>{t("W01_go")}</button>
                 </div>
             </div>
         </>
@@ -91,5 +115,3 @@ export async function getStaticProps({ locale }: { locale: any }) {
         },
     }
 }
-
-
