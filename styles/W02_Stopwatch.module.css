@@ -35,8 +35,14 @@
 /* コストタイトル */
 .costTitle{
     margin-top: 2em;
-    letter-spacing: 1em;
+    letter-spacing: 0.5em;
     text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .costTitle {
+        letter-spacing: 0em;
+    }
 }
 
 .costContainer{
@@ -47,4 +53,12 @@
     display: flex;
     justify-content: center;
     gap:5em
+}
+
+@media screen and (max-width: 768px) {
+    .costContainer {
+        flex-direction: column;
+        gap:1em
+
+    }
 }
