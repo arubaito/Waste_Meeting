@@ -20,7 +20,7 @@
     max-width: 410px;
     background: #eaedf2;
     font-size: 18px;
-    padding: .4em 3.6em .4em .8em;
+    padding: .4em;
     margin: 0 1em;
 }
 @media screen and (max-width: 768px) {
