@@ -5,6 +5,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Container from '@/components/Container';
 
+// Font Awosomeのアイコンが一瞬大きく表示されるのでそれを防ぐ
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
+
 // SSRとか⇒ https://blog.hey3.dev/posts/nextjs-spa
 function App({ Component, pageProps }: AppProps) {
 
