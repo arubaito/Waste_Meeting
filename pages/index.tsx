@@ -2,10 +2,12 @@ import Link from "next/link";
 import styles from "styles/C01_TopMenu.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStopwatch, faCoins } from "@fortawesome/free-solid-svg-icons";
+import Meta from "@/components/Meta";
 
 export default function TopMenu() {
   return (
     <>
+      <Meta pageTitle="メニュー" />
       <div className={styles.menuContainer}>
         <h1>メニュー</h1>
         <div className={styles.menuItems}>

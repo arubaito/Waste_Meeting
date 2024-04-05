@@ -1,3 +1,4 @@
+import Meta from "@/components/Meta";
 import { useRef, useState } from "react";
 import styles from "styles/W03_SimpleStopwatch.module.css";
 
@@ -46,6 +47,7 @@ export default function StopWatch() {
 
     return (
         <>
+            <Meta pageTitle="Simple Stopwatch" />
             <div className={styles.contentsContainer}>
                 <div>
                     <div className={styles.stopwatch}>{hours}:{minutes}:{seconds}:{milliseconds}</div>

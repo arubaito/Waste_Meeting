@@ -6,6 +6,7 @@ import styles from "styles/W01_RegisterUser.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYenSign } from "@fortawesome/free-solid-svg-icons";
 import { useForm, useFieldArray } from "react-hook-form";
+import Meta from "@/components/Meta";
 
 /**
  * ユーザのコスト登録
@@ -57,6 +58,7 @@ export default function RegisterUser() {
 
     return (
         <>
+            <Meta pageTitle="ユーザ入力" />
             <div className={styles.contentsContainer}>
                 <form >
                     <div className={styles.inputContainer}>

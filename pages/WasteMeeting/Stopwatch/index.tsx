@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from "styles/W02_Stopwatch.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
+import Meta from "@/components/Meta";
 
 export default function Stopwatch() {
     // 翻訳設定
@@ -59,6 +60,7 @@ export default function Stopwatch() {
 
     return (
         <>
+            <Meta pageTitle="Waste Meeting" />
             <div className={styles.contentsContainer}>
                 {/* ストップウォッチ */}
                 <div>
