@@ -1,38 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Waste Meeting
+会議にかかった費用を算出するアプリです。
 
-## Getting Started
+Next.jsで作成しています。
+AWS Aplifyで動作確認済み。
 
-First, run the development server:
+## トップページ
+![W00.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/526202/72db863e-1d2d-784a-8b65-e72c0cacaf4f.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# 機能紹介
+## W01:出席者登録
+出席者と出席者の時給を入力。
+![W01.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/526202/af635601-c652-0348-6696-0aa16b79efb2.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## W02:会議費用算出ストップウォッチ
+出席者登録の費用に基づいて会議にかかる費用を算出。
+![W02.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/526202/52a53c97-ab3a-89f8-e477-52af1a2f2e24.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## W03:ストップウォッチ
+シンプルなストップウォッチ
+![W03.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/526202/b28c2b28-76a4-9f3b-f1f8-b60cc194772d.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 今後実装予定
+- 会議グループ機能
+...etc
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+※開発中断中
